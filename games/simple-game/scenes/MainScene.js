@@ -8,6 +8,7 @@ import "../components/ScoreUpdaterComponent.js"
 import "../components/WinComponent.js"
 import "../components/MoveEnemyComponent.js"
 import "../components/EnemyFireComponent.js"
+import "../components/StarGeneratorComponent.js"
 import "../components/StarMoverComponent.js"
 
 import "../prefabs/DeathGameObject.js"
@@ -16,6 +17,7 @@ import "../prefabs/PlayerGameObject.js"
 import "../prefabs/FlodnagGameObjects.js"
 import "../prefabs/FirstBossGameObject.js"
 import "../prefabs/PlayerGameObject.js"
+import "../prefabs/StarControllerGameObject.js"
 
 
 /** The main scene in our game */
@@ -64,6 +66,9 @@ class MainScene extends Scene {
       scoreGameObject.addComponent(new Text("Score: ", "30px sans", "white"))
       scoreGameObject.addComponent(new ScoreUpdaterComponent())
       GameObject.instantiate(scoreGameObject, 30, 30)
+
+      GameObject.instantiate(new StarControllerGameObject())
+      GameObject.instantiate(new StarGameObject(), 50, 100, 20, 20)
   }
 }
 

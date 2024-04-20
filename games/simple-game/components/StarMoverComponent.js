@@ -1,4 +1,4 @@
-class StarMoverComponenet extends Components {
+class StarMoverComponent extends Component {
     constructor() {
         super("StarMoverComponent")
     }
@@ -11,4 +11,4 @@ class StarMoverComponenet extends Components {
     }
 }
 
-window.StarMoverComponenet = StarMoverComponent
+window.StarMoverComponent = StarMoverComponent

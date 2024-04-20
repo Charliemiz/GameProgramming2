@@ -3,6 +3,8 @@ class StarGameObject extends GameObject {
         super("StarGameObject")
     }
     start(ctx){
+        //start
+        super.start(ctx)
         this.layer = -1
         this.addComponent(new Circle("white", "transparent"))
 
@@ -10,8 +12,7 @@ class StarGameObject extends GameObject {
         // I also want to have many rows of stars within the game
         this.addComponent(new StarMoverComponent())
 
-        //start
-        super.start(ctx)
+      
 
     }
 }
