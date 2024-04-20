@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Collisions</title>
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv">
+    </canvas>
+
+    <script type="module">
+        import "/engine/Engine.js"
+        import "./MainScene.js"
+        import "./RectangleScene.js"
+
+        // Engine.currentScene = new MainScene();
+        Engine.currentScene = new RectangleScene();
+
+        Engine.setup()
+    </script>
+</body>
+
+</html>
