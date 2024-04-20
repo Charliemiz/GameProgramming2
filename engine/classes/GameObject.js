@@ -18,7 +18,7 @@
  */
 
 class GameObject {
-
+    
     /** The list of components in this game object */
     components = []
 
