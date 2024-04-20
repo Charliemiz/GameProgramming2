@@ -8,6 +8,16 @@ class StarGeneratorComponent extends Components {
     }
 
     update(){
+        this.countDown -= Time.deltaTime;
 
+        // check when countdown is over and spawn new star
+        if(this.countDown <= 0){
+            let starGameObject = new StarGameObject()
+            GameObject.instantiate(starGameObject, 25, 100, 20, 20)
+            starGameObject.start(ctx)
+
+            // reset count down
+            this.generateCountDown =  this.generateCountDownAmount;
+        }
     }
 }
