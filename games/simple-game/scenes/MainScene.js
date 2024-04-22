@@ -10,6 +10,7 @@ import "../components/MoveEnemyComponent.js"
 import "../components/EnemyFireComponent.js"
 import "../components/StarGeneratorComponent.js"
 import "../components/StarMoverComponent.js"
+import "../components/HealthUpdaterComponent.js"
 
 import "../prefabs/DeathGameObject.js"
 import "../prefabs/StarGameObject.js"
@@ -29,12 +30,17 @@ class MainScene extends Scene {
       Globals.numberOfDeathGameObjects = 0
 
       let levelNameGameObject = new GameObject()
-      levelNameGameObject.addComponent(new Text("Level 1 ", "50px sans", "black"))
+      levelNameGameObject.addComponent(new Text("Level 1 ", "50px sans", "white"))
       GameObject.instantiate(levelNameGameObject, 500, 50)
+
+      let playerHealthGameObject = new GameObject()
+      playerHealthGameObject.addComponent(new Text("PlayerHealth: ", "30px sans", "white"))
+      playerHealthGameObject.addComponent(new HealthUpdaterComponent())
+      GameObject.instantiate(playerHealthGameObject, 10, 700)
       
       let circleGameObject = new PlayerGameObject()
       circleGameObject.addComponent(new KeyboardComponent())
-      //circleGameObject.addComponent(new FireComponent())
+      circleGameObject.addComponent(new FireComponent())
       circleGameObject.addComponent(new WinComponent())
       GameObject.instantiate(circleGameObject, 200, 400, 50)
       // let circleGameObject = new GameObject("CircleGameObject")

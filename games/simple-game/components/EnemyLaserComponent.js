@@ -25,7 +25,7 @@ class EnemyLaserComponent extends Component{
                     let event = {
                         origin: this,
                         dest: invader,
-                        name: "laserCollision",
+                        name: "laserPlayerCollision",
                     }
                     
                     

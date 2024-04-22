@@ -27,7 +27,7 @@ class DeathComponent extends Component {
     }
 
     update() {
-
+        console.log('hello')
         let circleGameObject = null;
         for (let gameObject of Engine.currentScene.gameObjects) {
             if (gameObject.name == "CircleGameObject") {

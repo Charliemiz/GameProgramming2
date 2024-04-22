@@ -10,7 +10,7 @@ class PlayerDeathComponent extends Component {
         //console.log(event);
         console.log(event.dest)
         if (event.dest == this.parent) {
-            if (event.name == "laserCollision") {
+            if (event.name == "laserPlayerCollision") {
                 this.parent.health--;
                 console.log('hit')
                 if (this.parent.health <= 0) {
