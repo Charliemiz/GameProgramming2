@@ -68,7 +68,7 @@ class MainScene extends Scene {
       GameObject.instantiate(scoreGameObject, 30, 30)
 
       GameObject.instantiate(new StarControllerGameObject())
-      GameObject.instantiate(new StarGameObject(), 50, 100, 20, 20)
+      
   }
 }
 

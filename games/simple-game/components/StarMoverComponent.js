@@ -1,13 +1,22 @@
 class StarMoverComponent extends Component {
     constructor() {
         super("StarMoverComponent")
+        this.direction = .1
+        this.timeElapsed = 0
+        this.duration = 2000;
     }
-    // when updating the stars in my game i want them
-    // to go up and to the right from the 
-    // bottom left corner of the canvas
+    // I want the stars to stay in place but i want them to move left and right for a little animation
     update(ctx) {
-        this.transform.x += Time.deltaTime * 10;
-        this.transform.y += Time.deltaTime * 10;
+        this.transform.x += this.direction;
+
+        this.timeElapsed += 30
+
+        if (this.timeElapsed >= this.duration) {
+            // Reset the timer
+            this.timeElapsed = 0;
+            // Switch direction
+            this.direction *= -1;
+        }
     }
 }
 

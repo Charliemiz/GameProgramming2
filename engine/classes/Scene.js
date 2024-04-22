@@ -68,12 +68,15 @@ class Scene {
     draw(ctx) {
         // Clear the scene
         ctx.fillStyle = this.backgroundColor;
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-        //Call draw on all the game objects
-        for (const gameObject of this.gameObjects) {
+        // Sort game objects by their layer before drawing them
+        let sortedLayers = [...this.gameObjects].sort((a, b) => a.layer - b.layer);
+
+        // Call draw on each sorted game object
+        for (const gameObject of sortedLayers) {
             if (gameObject.draw) {
-                gameObject.draw(ctx)
+                gameObject.draw(ctx);
             }
 
         }

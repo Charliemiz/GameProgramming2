@@ -22,6 +22,9 @@ class GameObject {
     /** The list of components in this game object */
     components = []
 
+    // this will allow the stars to stay behind the game objects
+    layer = 0
+
     /**
      * Create a new game object. Note that this also instantiate and adds the 
      * first component, an instance of `Transform` so that all game objects are
