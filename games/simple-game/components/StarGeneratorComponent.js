@@ -20,9 +20,9 @@ class StarGeneratorComponent extends Component {
         });
     }
 
-    update(ctx){
+    // update(ctx){
         
-    }
+    // }
 }
 
 window.StarGeneratorComponent = StarGeneratorComponent;

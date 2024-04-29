@@ -1,5 +1,10 @@
 class HealthUpdaterComponent extends Component {
+    constructor() {
+      super()
+      
+    }
     start() {
+        
         Globals.playerhealth = 5
         EventSystem.registerListener(this);
       }

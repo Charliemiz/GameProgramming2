@@ -11,6 +11,8 @@ import "../components/EnemyFireComponent.js"
 import "../components/StarGeneratorComponent.js"
 import "../components/StarMoverComponent.js"
 import "../components/HealthUpdaterComponent.js"
+import "../components/PlayerBorderComponent.js"
+import "../components/CameraMoverComponent.js"
 
 import "../prefabs/DeathGameObject.js"
 import "../prefabs/StarGameObject.js"
@@ -19,12 +21,16 @@ import "../prefabs/FlodnagGameObjects.js"
 import "../prefabs/FirstBossGameObject.js"
 import "../prefabs/PlayerGameObject.js"
 import "../prefabs/StarControllerGameObject.js"
+import "../prefabs/ControllerGameObject.js"
 
 
 /** The main scene in our game */
 class MainScene extends Scene {
   constructor() {
       super("black")
+
+      this.aspectRatio = 1;
+      this.logicalWidth = 20;
   }
   start(ctx){
       Globals.numberOfDeathGameObjects = 0
@@ -32,17 +38,15 @@ class MainScene extends Scene {
       let levelNameGameObject = new GameObject()
       levelNameGameObject.addComponent(new Text("Level 1 ", "50px sans", "white"))
       GameObject.instantiate(levelNameGameObject, 500, 50)
-
-      let playerHealthGameObject = new GameObject()
-      playerHealthGameObject.addComponent(new Text("PlayerHealth: ", "30px sans", "white"))
-      playerHealthGameObject.addComponent(new HealthUpdaterComponent())
-      GameObject.instantiate(playerHealthGameObject, 10, 700)
       
       let circleGameObject = new PlayerGameObject()
       circleGameObject.addComponent(new KeyboardComponent())
       circleGameObject.addComponent(new FireComponent())
       circleGameObject.addComponent(new WinComponent())
-      GameObject.instantiate(circleGameObject, 200, 400, 50)
+      circleGameObject.addComponent(new PlayerBorderComponent())
+      GameObject.instantiate(circleGameObject, 200, 700, 50)
+
+      
       // let circleGameObject = new GameObject("CircleGameObject")
       // circleGameObject.addComponent(new Circle())
       // circleGameObject.addComponent(new KeyboardComponent())
@@ -51,20 +55,21 @@ class MainScene extends Scene {
       // GameObject.instantiate(circleGameObject, 200, 400, 50)
       
       let shooter = new DeathGameObject()
-      shooter.addComponent(new EnemyFireComponent())
-      GameObject.instantiate(shooter, 200, 0, 50)
+      //shooter.addComponent(new EnemyFireComponent())
+      GameObject.instantiate(shooter, 200, 0, 10)
       Globals.numberOfDeathGameObjects++
 
-      GameObject.instantiate(new FlodnagGameObject(), 300, 200, 50)
+      GameObject.instantiate(new FlodnagGameObject(), 300, 200, 10)
       Globals.numberOfDeathGameObjects++
       
-      GameObject.instantiate(new FirstBossGameObject(), 500, 200, 80)
+      GameObject.instantiate(new FirstBossGameObject(), 500, 200, 30)
       Globals.numberOfDeathGameObjects++
 
       let temp = new FirstBossGameObject()
       temp.addComponent(new MoveEnemyComponent())
       temp.addComponent(new EnemyFireComponent())
       GameObject.instantiate(temp, 800, 200, 80)
+      Globals.numberOfDeathGameObjects++
       
 
       
@@ -73,8 +78,14 @@ class MainScene extends Scene {
       scoreGameObject.addComponent(new ScoreUpdaterComponent())
       GameObject.instantiate(scoreGameObject, 30, 30)
 
+      // instantiate after everything so its layered above player and enemies
+      let playerHealthGameObject = new GameObject()
+      playerHealthGameObject.addComponent(new Text("PlayerHealth: ", "30px sans", "white"))
+      playerHealthGameObject.addComponent(new HealthUpdaterComponent())
+      GameObject.instantiate(playerHealthGameObject, 10, 700)
+
       GameObject.instantiate(new StarControllerGameObject())
-      
+      GameObject.instantiate(new ControllerGameObject())
   }
 }
 

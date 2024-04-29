@@ -16,6 +16,15 @@ class Scene {
      * game objects) */
     hasStarted = false;
 
+    logicalWidth = -1;
+
+    aspectRatio = -1;
+
+    logicalWidthViewWidthInPixels = -1
+    logicalWidthViewHeightInPixels = -1
+
+    letterBox1End = 0;
+    letterBox2Start = 0;
     /**
      * Create a scene with the given background color.
      * 
@@ -70,8 +79,60 @@ class Scene {
         ctx.fillStyle = this.backgroundColor;
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
+        ctx.save()
+
+
+        let windowAspectRatio = ctx.canvas.height / ctx.canvas.width;
+
+
+
+        let usingLogicalCoordinates = this.logicalWidth > 0 && this.aspectRatio > 0
+
+        if (usingLogicalCoordinates) {
+            if (this.aspectRatio > windowAspectRatio) {
+                this.letterBox1End = (ctx.canvas.width) / 2 - (ctx.canvas.height / this.aspectRatio) / 2;
+                this.letterBox2Start = (ctx.canvas.width) / 2 + (ctx.canvas.height / this.aspectRatio) / 2;
+                ctx.translate(this.letterBox1End, 0)
+                let scaleFactor = ctx.canvas.height / this.logicalWidth;
+                ctx.scale(scaleFactor, scaleFactor)
+
+                this.logicalWidthViewWidthInPixels = this.letterBox2Start - this.letterBox1End;
+                this.logicalWidthViewHeightInPixels = ctx.canvas.height;
+            }
+            else {
+                this.letterBox1End = (ctx.canvas.height) / 2 - (ctx.canvas.width * this.aspectRatio) / 2;
+                this.letterBox2Start = (ctx.canvas.width * this.aspectRatio) / 2 + (ctx.canvas.height) / 2;
+                ctx.translate(0, this.letterBox1End)
+                let scaleFactor = ctx.canvas.width / (this.logicalWidth / this.aspectRatio);
+                ctx.scale(scaleFactor, scaleFactor)
+
+                this.logicalWidthViewWidthInPixels = ctx.canvas.width;
+                this.logicalWidthViewHeightInPixels = this.letterBox2Start - this.letterBox1End;
+            }
+        }
+
+        ctx.scale(Camera.main.transform.scaleX, Camera.main.transform.scaleY)
+        ctx.translate(-Camera.main.transform.x, -Camera.main.transform.y)
+        //ctx.translate(ctx.canvas.width/2, ctx.canvas.height/2)
+
         // Sort game objects by their layer before drawing them
         let sortedLayers = [...this.gameObjects].sort((a, b) => a.layer - b.layer);
+
+        ctx.restore()
+        ctx.fillStyle = "black"
+
+        if (usingLogicalCoordinates) {
+            if (this.aspectRatio > windowAspectRatio) {
+
+                ctx.fillRect(0, 0, this.letterBox1End, ctx.canvas.height);
+                ctx.fillRect(this.letterBox2Start, 0, ctx.canvas.width, ctx.canvas.height);
+            }
+            else {
+                ctx.fillRect(0, 0, ctx.canvas.width, this.letterBox1End);
+                ctx.fillRect(0, this.letterBox2Start, ctx.canvas.width, ctx.canvas.height);
+            }
+        }
+
 
         // Call draw on each sorted game object
         for (const gameObject of sortedLayers) {
@@ -80,6 +141,10 @@ class Scene {
             }
 
         }
+
+
+
+
     }
 }
 

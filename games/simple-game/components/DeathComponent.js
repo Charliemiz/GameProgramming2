@@ -21,16 +21,26 @@ class DeathComponent extends Component {
                     })
                     GameObject.destroy(this.parent);
                     Globals.numberOfDeathGameObjects--
+
+                    GameObject.instantiate(new FirstBossGameObject(), 700, 200, 30)
+
+                    // let new_spawn = new FlodnagGameObject()
+                    // GameObject.instantiate(new_spawn, 1000, 400, 50)
+                    // new_spawn.start(ctx)
+                    // //new_spawn.addComponent("Circle")
+                    // Globals.numberOfDeathGameObjects--
+                    
+                    
                 }
             }
         }
     }
 
     update() {
-        console.log('hello')
+        
         let circleGameObject = null;
         for (let gameObject of Engine.currentScene.gameObjects) {
-            if (gameObject.name == "CircleGameObject") {
+            if (gameObject.name == "PlayerGameObject") {
                 circleGameObject = gameObject
             }
         }

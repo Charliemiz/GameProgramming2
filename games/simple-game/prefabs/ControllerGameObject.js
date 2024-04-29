@@ -3,7 +3,8 @@ class ControllerGameObject extends GameObject{
       super("ControllerGameObject")
     }
     start(ctx){
-      this.addComponent(new StarGeneratorComponent())
+      
+      this.addComponent(new CameraMoverComponent())
       super.start(ctx)
     }
   }
