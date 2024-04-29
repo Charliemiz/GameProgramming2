@@ -17,10 +17,12 @@
 
     <script type="module">
         import "/engine/Engine.js"
+        import "./scenes/StartScene.js"
         import "./scenes/MainScene.js"
         import "./scenes/DeathScene.js"
         import "./scenes/WinScene.js"
-        Engine.currentScene = new MainScene();
+        Engine.currentScene = new StartScene();
+        
 
         Engine.setup()
     </script>

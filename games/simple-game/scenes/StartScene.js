@@ -1,4 +1,5 @@
 import "../components/KeyboardComponent.js"
+import "../components/StartGameComponent.js"
 
 
 class StartScene extends Scene {
@@ -8,12 +9,13 @@ class StartScene extends Scene {
 
     start(ctx) {
         let userStartText = new GameObject()
-        userStartText.addComponent(new Text("Level 1 ", "50px sans", "white"))
+        userStartText.addComponent(new Text("press t to begin", "50px sans", "white"))
+        userStartText.addComponent(new StartGameComponent())
         GameObject.instantiate(userStartText, 500, 50)
 
 
 
-        
+
     }
     
 
