@@ -1,6 +1,6 @@
 class ControllerGameObject extends GameObject{
     constructor(){
-      super("ControllerGameObject")
+      super("Camera")
     }
     start(ctx){
       

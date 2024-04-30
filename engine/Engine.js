@@ -79,6 +79,12 @@ class Engine {
 
     setInterval(Engine.gameLoop, Time.ms)
   }
+  // for when a scene is switched to clear listeners
+  static changeScene(scene) {
+    EventSystem.listeners = []
+    Engine.currentScene = scene;
+  }
+
 }
 
 window.Engine = Engine

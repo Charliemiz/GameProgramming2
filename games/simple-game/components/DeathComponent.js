@@ -22,10 +22,12 @@ class DeathComponent extends Component {
                     GameObject.destroy(this.parent);
                     Globals.numberOfDeathGameObjects--
 
-                    GameObject.instantiate(new FirstBossGameObject(), 700, 200, 30)
+                    //GameObject.instantiate(new FirstBossGameObject(), 200, 200, 30)
 
-                    // let new_spawn = new FlodnagGameObject()
-                    // GameObject.instantiate(new_spawn, 1000, 400, 50)
+                    let new_spawn = new DeathGameObject()
+                    
+                    GameObject.instantiate(new_spawn, 200, 400, 50)
+                    
                     // new_spawn.start(ctx)
                     // //new_spawn.addComponent("Circle")
                     // Globals.numberOfDeathGameObjects--
