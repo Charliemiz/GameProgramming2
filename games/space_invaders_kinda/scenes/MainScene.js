@@ -36,15 +36,15 @@ class MainScene extends Scene {
       Globals.numberOfDeathGameObjects = 0
 
       let levelNameGameObject = new GameObject()
-      levelNameGameObject.addComponent(new Text("Level 1 ", "50px sans", "white"))
-      GameObject.instantiate(levelNameGameObject, 500, 50)
+      levelNameGameObject.addComponent(new Text("Level: 1 ", "50px sans", "white"))
+      GameObject.instantiate(levelNameGameObject, 550, 50)
       
       let circleGameObject = new PlayerGameObject()
       circleGameObject.addComponent(new KeyboardComponent())
       circleGameObject.addComponent(new FireComponent())
       circleGameObject.addComponent(new WinComponent())
       circleGameObject.addComponent(new PlayerBorderComponent())
-      GameObject.instantiate(circleGameObject, 200, 700, 50)
+      GameObject.instantiate(circleGameObject, 700, 700, 50)
 
       
       // let circleGameObject = new GameObject("CircleGameObject")
@@ -56,33 +56,33 @@ class MainScene extends Scene {
       
       let shooter = new DeathGameObject()
       //shooter.addComponent(new EnemyFireComponent())
-      GameObject.instantiate(shooter, 200, 0, 10)
-      Globals.numberOfDeathGameObjects++
-
-      GameObject.instantiate(new FlodnagGameObject(), 300, 200, 10)
-      Globals.numberOfDeathGameObjects++
+      GameObject.instantiate(shooter, 700, 100, 10)
       
-      GameObject.instantiate(new FirstBossGameObject(), 500, 200, 30)
-      Globals.numberOfDeathGameObjects++
 
-      let temp = new FirstBossGameObject()
-      temp.addComponent(new MoveEnemyComponent())
-      temp.addComponent(new EnemyFireComponent())
-      GameObject.instantiate(temp, 800, 200, 80)
-      Globals.numberOfDeathGameObjects++
+      // GameObject.instantiate(new FlodnagGameObject(), 300, 200, 10)
+
+      
+      // GameObject.instantiate(new FirstBossGameObject(), 500, 200, 30)
+      
+
+      // let temp = new FirstBossGameObject()
+      // temp.addComponent(new MoveEnemyComponent())
+      // //temp.addComponent(new EnemyFireComponent())
+      // GameObject.instantiate(temp, 800, 200, 80)
+      
       
 
       
       let scoreGameObject = new GameObject()
-      scoreGameObject.addComponent(new Text("Score: ", "30px sans", "white"))
+      scoreGameObject.addComponent(new Text("Score: ", "50px sans", "white"))
       scoreGameObject.addComponent(new ScoreUpdaterComponent())
-      GameObject.instantiate(scoreGameObject, 30, 30)
+      GameObject.instantiate(scoreGameObject, 750, 50)
 
       // instantiate after everything so its layered above player and enemies
       let playerHealthGameObject = new GameObject()
-      playerHealthGameObject.addComponent(new Text("PlayerHealth: ", "30px sans", "white"))
+      playerHealthGameObject.addComponent(new Text("PlayerHealth: ", "50px sans", "white"))
       playerHealthGameObject.addComponent(new HealthUpdaterComponent())
-      GameObject.instantiate(playerHealthGameObject, 10, 700)
+      GameObject.instantiate(playerHealthGameObject, 950, 50)
 
       GameObject.instantiate(new StarControllerGameObject())
       GameObject.instantiate(new ControllerGameObject())

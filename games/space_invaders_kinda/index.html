@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Collisions</title>
+    <title>A Simple Game</title>
     <style>
         * {
             margin: 0;
@@ -17,14 +17,17 @@
 
     <script type="module">
         import "/engine/Engine.js"
-        import "./MainScene.js"
-        import "./RectangleScene.js"
-
-        // Engine.currentScene = new MainScene();
-        Engine.currentScene = new RectangleScene();
+        import "./scenes/StartScene.js"
+        import "./scenes/MainScene.js"
+        import "./scenes/DeathScene.js"
+        import "./scenes/WinScene.js"
+       
+        Engine.currentScene = new StartScene();
+        
 
         Engine.setup()
     </script>
 </body>
 
 </html>
+

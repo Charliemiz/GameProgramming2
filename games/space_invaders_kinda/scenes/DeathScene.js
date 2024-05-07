@@ -2,11 +2,14 @@ import "../components/ScoreReaderComponent.js"
 import "../components/EndSceneCounterComponent.js"
 import "../components/ScoreUpdaterComponent.js"
 import "../components/KeyboardComponent.js"
+import "../components/CameraMoverComponent.js"
 
 /** The final scene in our game */
 class DeathScene extends Scene {
   constructor() {
       super("black")
+      this.aspectRatio = 1;
+      this.logicalWidth = 20;
   }
   start(ctx){
       
@@ -22,6 +25,9 @@ class DeathScene extends Scene {
       let endSceneGameObject = new GameObject("EndSceneCounterGameObject")
       endSceneGameObject.addComponent(new EndSceneCounterComponent())
       GameObject.instantiate(endSceneGameObject)
+
+      GameObject.instantiate(new StarControllerGameObject())
+      GameObject.instantiate(new ControllerGameObject())
   }
 }
 

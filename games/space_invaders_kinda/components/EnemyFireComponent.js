@@ -9,7 +9,7 @@ class EnemyFireComponent extends Component {
     update() {
         if (this.secondsToFire <= 0) {
             let laserGameObject = new GameObject("LaserGameObject")
-            laserGameObject.addComponent(new Circle("purple", "white"))
+            laserGameObject.addComponent(new Circle("red", "red"))
             laserGameObject.addComponent(new EnemyLaserComponent())
             GameObject.instantiate(laserGameObject, this.transform.x, this.transform.y, 5);
 

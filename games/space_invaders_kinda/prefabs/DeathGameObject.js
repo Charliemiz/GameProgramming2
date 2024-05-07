@@ -1,6 +1,7 @@
 class DeathGameObject extends GameObject {
     constructor(name = "DeathGameObject") {
         super(name);
+        Globals.numberOfDeathGameObjects++
     }
     start(ctx) {
         super.start(ctx)

@@ -3,7 +3,7 @@ class MoveEnemyComponent extends Component {
         super();
 
         // Initialize variables to move enemies
-        this.direction = 5
+        this.direction = 1
         this.timeElapsed = 0
         this.duration = 1000;
     }
@@ -11,7 +11,7 @@ class MoveEnemyComponent extends Component {
     update() {
         this.transform.x += this.direction;
 
-        this.timeElapsed += 30
+        this.timeElapsed += 10
 
         if (this.timeElapsed >= this.duration) {
             // Reset the timer

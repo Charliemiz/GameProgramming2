@@ -8,10 +8,11 @@ class StarGeneratorComponent extends Component {
         const locations = [];
         for (let i = 0; i < 50; i++) {
             locations.push({
-                x: Math.floor(Math.random() * 1800), // Random x-coordinate from 0 to 1800
-                y: Math.floor(Math.random() * 1000)  // Random y-coordinate from 0 to 1000
+                x: Math.floor(Math.random() * 2000), // Random x-coordinate from 0 to 2000
+                y: Math.floor(Math.random() * 2000)  // Random y-coordinate from 0 to 2000
             });
         }
+    
         
         locations.forEach(location => {
             let starGameObject = new StarGameObject();

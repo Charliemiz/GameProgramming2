@@ -101,7 +101,6 @@ class Scene {
         // Sort game objects by their layer before drawing them
         let sortedLayers = [...this.gameObjects].sort((a, b) => a.layer - b.layer);
 
-        ctx.restore()
         ctx.fillStyle = "black"
 
         if (usingLogicalCoordinates) {
@@ -126,7 +125,7 @@ class Scene {
         }
 
 
-
+        ctx.restore()
 
     }
 }

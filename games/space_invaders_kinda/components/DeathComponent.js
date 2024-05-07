@@ -24,9 +24,9 @@ class DeathComponent extends Component {
 
                     //GameObject.instantiate(new FirstBossGameObject(), 200, 200, 30)
 
-                    let new_spawn = new DeathGameObject()
+                    //let new_spawn = new DeathGameObject()
                     
-                    GameObject.instantiate(new_spawn, 200, 400, 50)
+                    // GameObject.instantiate(new_spawn, 200, 400, 50)
                     
                     // new_spawn.start(ctx)
                     // //new_spawn.addComponent("Circle")

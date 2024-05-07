@@ -6,7 +6,7 @@ class EnemyLaserComponent extends Component{
         
         this.transform.y+=Time.deltaTime * 1000;
 
-        if(this.transform.y < 0){
+        if(this.transform.y >= 1000){
             GameObject.destroy(this.parent);
         }
 
